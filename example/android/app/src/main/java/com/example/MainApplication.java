@@ -1,9 +1,9 @@
 package com.example;
 
 import android.app.Application;
-import com.busfor.RNSmsVerificationApiPackage;
 
 import com.facebook.react.ReactApplication;
+import com.busfor.smsverification.RNSmsVerificationApiPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;

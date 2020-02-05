@@ -1,4 +1,4 @@
-package com.busfor
+package com.busfor.smsverification
 
 import android.app.Activity
 import android.content.Context

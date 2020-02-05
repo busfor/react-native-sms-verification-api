@@ -1,4 +1,4 @@
-package com.busfor
+package com.busfor.smsverification
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule

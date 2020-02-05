@@ -1,4 +1,4 @@
-package com.busfor
+package com.busfor.smsverification
 
 // Constants
 const val MINIMAL_VERSION = 10200000

@@ -1,4 +1,4 @@
-package com.busfor
+package com.busfor.smsverification
 
 enum class ErrorType(val type: String, val message: String) {
     SERVICES_UNAVAILABLE("GOOGLE_PLAY_SERVICE_UNAVAILABLE",

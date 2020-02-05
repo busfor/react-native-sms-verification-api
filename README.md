@@ -13,7 +13,7 @@ Verify your users by SMS without making them deal with verification code.
 | 1.0.x               			 |
 | :-------------------------:| 
 | Android support libraries  |
-s
+
 
 ## Getting started
 
@@ -52,7 +52,7 @@ Autolinking will just do the job.
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.busfor.RNSmsVerificationApiPackage;` to the imports at the top of the file
+  - Add `import com.busfor.smsverification.RNSmsVerificationApiPackage;` to the imports at the top of the file
   - Add `new RNSmsVerificationApiPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -61,7 +61,7 @@ Autolinking will just do the job.
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      implementation project(':@busfor_react-native-sms-verification-api')
+      implementation project(':react-native-sms-verification-api')
   	```
 
 ## Usage
