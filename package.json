@@ -1,5 +1,5 @@
 {
-  "name": "react-native-sms-verification-api",
+  "name": "@busfor/react-native-sms-verification-api",
   "title": "React Native Sms Verification Api",
   "version": "1.0.0",
   "description": "React Native module for Android automatic SMS verification with SMS retriever API",
