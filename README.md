@@ -45,7 +45,7 @@ Autolinking will just do the job.
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-sms-verification-api`
+`$ react-native link @busfor/react-native-sms-verification-api`
 
 ### Manual installation
 
@@ -56,12 +56,12 @@ Autolinking will just do the job.
   - Add `new RNSmsVerificationApiPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
-  	include ':react-native-sms-verification-api'
-  	project(':react-native-sms-verification-api').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sms-verification-api/android')
+  	include ':@busfor_react-native-sms-verification-api'
+		project(':@busfor_react-native-sms-verification-api').projectDir = new File(rootProject.projectDir, '../node_modules/@busfor/react-native-sms-verification-api/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      implementation project(':react-native-sms-verification-api')
+      implementation project(':@busfor_react-native-sms-verification-api')
   	```
 
 ## Usage
