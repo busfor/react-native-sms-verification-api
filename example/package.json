@@ -7,7 +7,7 @@
     "postinstall": "node ../scripts/examples_postinstall.js"
   },
   "dependencies": {
-    "react": "16.8.3",
+    "react": "16.8.6",
     "react-native": "0.59.10",
     "react-native-sms-verification-api": "file:../"
   },

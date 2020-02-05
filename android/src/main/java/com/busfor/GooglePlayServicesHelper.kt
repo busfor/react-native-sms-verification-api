@@ -8,26 +8,23 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.phone.SmsRetriever
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 
-class GooglePlayServicesHelper(context: Context, activity: Activity,
-                               connectionCallbacks: GoogleApiClient.ConnectionCallbacks,
-                               connectionListener: GoogleApiClient.OnConnectionFailedListener) {
-    private val mActivity = activity
-    private val mContext = context
-    private val mConnectionCallbacks =  connectionCallbacks
-    private val mConnectionListener = connectionListener
+object GooglePlayServicesHelper {
     private var mGoogleApiClient: GoogleApiClient? = null
 
-    fun isAvailable(): Boolean {
-        val result = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(mContext)
+    fun isAvailable(context: Context): Boolean {
+        val result = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context)
 
         return (result != ConnectionResult.SERVICE_MISSING
                 && result != ConnectionResult.SERVICE_DISABLED
                 && result != ConnectionResult.SERVICE_INVALID)
     }
 
-    fun hasSupportedVersion(): Boolean {
-        val manager = mContext.packageManager
+    fun hasSupportedVersion(context: Context): Boolean {
+        val manager = context.packageManager
 
         return try {
             val version = manager
@@ -39,14 +36,16 @@ class GooglePlayServicesHelper(context: Context, activity: Activity,
         }
     }
 
-    fun getGoogleApiClient(): GoogleApiClient {
+    fun getGoogleApiClient(context: Context, activity: Activity,
+                           connectionCallbacks: GoogleApiClient.ConnectionCallbacks,
+                           connectionListener: GoogleApiClient.OnConnectionFailedListener): GoogleApiClient {
         if (mGoogleApiClient == null) {
-            var builder: GoogleApiClient.Builder = GoogleApiClient.Builder(mContext)
-            builder.addConnectionCallbacks(mConnectionCallbacks)
+            var builder: GoogleApiClient.Builder = GoogleApiClient.Builder(context)
+            builder.addConnectionCallbacks(connectionCallbacks)
             builder.addApi(Auth.CREDENTIALS_API)
 
-            if (mActivity is FragmentActivity) {
-                builder = builder.enableAutoManage(mActivity, mConnectionListener)
+            if (activity is FragmentActivity) {
+                builder = builder.enableAutoManage(activity, connectionListener)
             }
             mGoogleApiClient = builder.build()
         }
@@ -54,13 +53,21 @@ class GooglePlayServicesHelper(context: Context, activity: Activity,
         return mGoogleApiClient as GoogleApiClient
     }
 
-    fun disconnectApiClient() {
+    fun disconnectApiClient(activity: Activity?) {
         if (mGoogleApiClient != null) {
-            if (mActivity is FragmentActivity) {
-                mGoogleApiClient?.stopAutoManage(mActivity)
+            if (activity is FragmentActivity) {
+                mGoogleApiClient?.stopAutoManage(activity)
             }
             mGoogleApiClient?.disconnect()
             mGoogleApiClient = null
         }
+    }
+
+    fun startSmsRetriever(context: Context, onSuccessListener: OnSuccessListener<Void>,
+                          onFailureListener: OnFailureListener) {
+        val client = SmsRetriever.getClient(context)
+        val task = client.startSmsRetriever()
+        task.addOnSuccessListener(onSuccessListener)
+        task.addOnFailureListener(onFailureListener)
     }
 }

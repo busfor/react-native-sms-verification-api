@@ -13,5 +13,9 @@ enum class ErrorType(val type: String, val message: String) {
     ACTIVITY_RESULT_NOOK("ACTIVITY_RESULT_NOOK",
             "There was an error trying to get the phone number."),
     SEND_INTENT_ERROR("SEND_INTENT_ERROR_TYPE",
-            "There was an error trying to send intent.")
+            "There was an error trying to send intent."),
+    TASK_FAILURE("TASK_FAILURE_ERROR_TYPE", "Task failed."),
+    EXTRAS_NULL(EXTRAS_KEY, "Extras is null."),
+    STATUS_NULL(STATUS_KEY, "Status is null."),
+    TIMEOUT(TIMEOUT_KEY, "Timeout error.")
 }

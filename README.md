@@ -72,4 +72,11 @@ SmsVerificationApi.requestPhoneNumber()
       .then((phone) => Alert.alert("SmsVerificationApi.requestPhoneNumber", phone))
       .catch((reason) => console.log(reason))
 
+SmsVerificationApi.startSmsRetriever()
+
+SmsVerificationApi.addSmsListener((event) => {
+	Alert.alert("SmsVerificationApi.smsRetriever", event.message)
+})
+
+SmsVerificationApi.removeSmsListener()
 ```
