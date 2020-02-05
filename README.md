@@ -1,7 +1,7 @@
 # react-native-sms-verification-api
-<!-- [![react-native version](https://img.shields.io/badge/react--native-0.41ee-0ba7d3.svg?style=flat-square)](https://github.com/facebook/react-native/releases/tag/v0.41.0)
-![npm]()
-[![npm (tag)]()]() -->
+![npm](https://img.shields.io/npm/dw/@busfor/react-native-sms-verification-api?style=for-the-badge)
+[![npm (tag)](https://img.shields.io/npm/v/@busfor/react-native-sms-verification-api/latest?style=for-the-badge)](https://img.shields.io/npm/v/@busfor/react-native-sms-verification-api/latest?style=for-the-badge)
+[![](https://img.shields.io/npm/types/typescript?style=for-the-badge)](https://img.shields.io/npm/types/typescript?style=for-the-badge)
 
 Verify your users by SMS without making them deal with verification code.
 
@@ -13,7 +13,7 @@ Verify your users by SMS without making them deal with verification code.
 | 1.0.x               			 |
 | :-------------------------:| 
 | Android support libraries  |
-
+s
 
 ## Getting started
 
