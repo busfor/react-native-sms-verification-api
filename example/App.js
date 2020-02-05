@@ -6,7 +6,7 @@ export default App = () => {
   const requestPhoneNumber = useCallback(() => {
     SmsVerificationApi.requestPhoneNumber()
       .then((phone) => Alert.alert("SmsVerificationApi.requestPhoneNumber", phone))
-      .catch((reason) => Alert.alert("SmsVerificationApi.requestPhoneNumber", reason))
+      .catch((reason) => console.log(reason))
   }, [])
 
   return (

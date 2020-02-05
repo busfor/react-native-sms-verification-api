@@ -2,7 +2,7 @@
   "name": "react-native-sms-verification-api",
   "title": "React Native Sms Verification Api",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "React Native module for Android automatic SMS verification with SMS retriever API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,8 +16,8 @@
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Ivan Sokolovskii",
+    "email": "ivan3177@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
