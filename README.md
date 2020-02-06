@@ -10,9 +10,9 @@ Verify your users by SMS without making them deal with verification code.
 
 ## Versions
 
-| 1.0.x               			 |
-| :-------------------------:| 
-| Android support libraries  |
+| 1.0.x               			 | 1.1.x+			|
+| :-------------------------:| :----------:
+| Android support libraries  | AndroidX		|
 
 
 ## Getting started
@@ -30,7 +30,7 @@ buildscript {
 	...
 	dependencies {
 		...
-		classpath org.jetbrains.kotlin:kotlin-gradle-plugin:${project.ext.kotlinVersion}
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${project.ext.kotlinVersion}"
 	}
 }
 ```

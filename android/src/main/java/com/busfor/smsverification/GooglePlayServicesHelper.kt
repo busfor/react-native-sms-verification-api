@@ -3,7 +3,7 @@ package com.busfor.smsverification
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient

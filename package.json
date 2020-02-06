@@ -24,13 +24,13 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.59.0-rc.0 <1.0.x"
+    "react": "^16.9.0",
+    "react-native": ">=0.60.0 <1.0.x"
   },
   "devDependencies": {
     "auto-changelog": "^1.16.2",
-    "react": "^16.8.6",
-    "react-native": "^0.59.10"
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
   },
   "auto-changelog": {
     "unreleased": true
