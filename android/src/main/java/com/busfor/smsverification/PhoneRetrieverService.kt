@@ -14,9 +14,10 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ActivityEventListener
 import com.facebook.react.bridge.BaseActivityEventListener
 
-internal class PhoneRetrieverService(private val mActivity: Activity?) {
+internal class PhoneRetrieverService {
     private var mPromise: Promise? = null
     private var mListener: Listener? = null
+    private var mActivity: Activity? = null
 
     fun getActivityEventListener(): ActivityEventListener {
         return mActivityEventListener
@@ -26,35 +27,35 @@ internal class PhoneRetrieverService(private val mActivity: Activity?) {
         mListener = listener
     }
 
-    fun requestPhoneNumber(context: Context, promise: Promise?) {
+    fun requestPhoneNumber(context: Context, activity: Activity?, promise: Promise?) {
         if (promise == null) {
             reject("", "")
             return
         }
-        if (mActivity == null) {
+        mPromise = promise
+
+        if (activity == null) {
             reject(ErrorType.NULL_ACTIVITY.type, ErrorType.NULL_ACTIVITY.message)
             return
         }
-
-        mPromise = promise
+        mActivity = activity
 
         if (!GooglePlayServicesHelper.isAvailable(context)) {
             reject(ErrorType.SERVICES_UNAVAILABLE.type, ErrorType.SERVICES_UNAVAILABLE.message)
             return
         }
-        if (GooglePlayServicesHelper.hasSupportedVersion(context)) {
+        if (!GooglePlayServicesHelper.hasSupportedVersion(context)) {
             reject(ErrorType.UNSUPPORTED_VERSION.type, ErrorType.UNSUPPORTED_VERSION.message)
             return
         }
 
-
         val request: HintRequest = HintRequest.Builder().setPhoneNumberIdentifierSupported(true).build()
         val googleApiClient: GoogleApiClient = GooglePlayServicesHelper
-                .getGoogleApiClient(context, mActivity, mApiClientConnectionCallbacks, mApiClientOnConnectionFailedListener)
+                .getGoogleApiClient(context, mActivity!!, mApiClientConnectionCallbacks, mApiClientOnConnectionFailedListener)
         val intent: PendingIntent = Auth.CredentialsApi.getHintPickerIntent(googleApiClient, request)
 
         try {
-            mActivity.startIntentSenderForResult(intent.intentSender,
+            mActivity!!.startIntentSenderForResult(intent.intentSender,
                     REQUEST_PHONE_NUMBER_REQUEST_CODE, null, 0, 0, 0)
         } catch (e: IntentSender.SendIntentException) {
             reject(ErrorType.SEND_INTENT_ERROR.type, ErrorType.SEND_INTENT_ERROR.message)

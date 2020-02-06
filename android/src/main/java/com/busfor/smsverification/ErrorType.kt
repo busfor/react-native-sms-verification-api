@@ -2,7 +2,7 @@ package com.busfor.smsverification
 
 enum class ErrorType(val type: String, val message: String) {
     SERVICES_UNAVAILABLE("GOOGLE_PLAY_SERVICE_UNAVAILABLE",
-            "Google Play Services is not available."),
+            "Google Play Services is not available on this device."),
     UNSUPPORTED_VERSION("UNSUPPORTED_GOOGLE_PLAY_SERVICES_VERSION",
             "The device version of Google Play Services is not supported."),
     CONNECTION_SUSPENDED("CONNECTION_SUSPENDED",
@@ -14,8 +14,8 @@ enum class ErrorType(val type: String, val message: String) {
             "There was an error trying to get the phone number."),
     SEND_INTENT_ERROR("SEND_INTENT_ERROR_TYPE",
             "There was an error trying to send intent."),
-    TASK_FAILURE("TASK_FAILURE_ERROR_TYPE", "Task failed."),
-    EXTRAS_NULL(EXTRAS_KEY, "Extras is null."),
-    STATUS_NULL(STATUS_KEY, "Status is null."),
-    TIMEOUT(TIMEOUT_KEY, "Timeout error.")
+    TASK_FAILURE("TASK_FAILURE_ERROR_TYPE", "SMS retrieving task failed."),
+    EXTRAS_NULL(EXTRAS_KEY, "SMS retrieving intent's extras is null."),
+    STATUS_NULL(STATUS_KEY, "SMS retrieving intent extras' status is null."),
+    TIMEOUT(TIMEOUT_KEY, "SMS retrieving service timed out.")
 }

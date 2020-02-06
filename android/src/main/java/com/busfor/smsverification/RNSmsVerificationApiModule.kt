@@ -1,5 +1,6 @@
 package com.busfor.smsverification
 
+import android.app.Activity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -7,7 +8,7 @@ import com.facebook.react.bridge.ReactMethod
 
 class RNSmsVerificationApiModule(reactContext: ReactApplicationContext)
     : ReactContextBaseJavaModule(reactContext) {
-    private val mPhoneRetrieverService: PhoneRetrieverService = PhoneRetrieverService(currentActivity)
+    private val mPhoneRetrieverService: PhoneRetrieverService = PhoneRetrieverService()
     private val mSmsRetrieverService: SmsRetrieverService = SmsRetrieverService(reactContext)
 
     override fun getName(): String {
@@ -25,6 +26,7 @@ class RNSmsVerificationApiModule(reactContext: ReactApplicationContext)
     @ReactMethod
     fun requestPhoneNumber(promise: Promise) {
         val context: ReactApplicationContext = reactApplicationContext
+        val activity: Activity? = currentActivity
         val eventListener = mPhoneRetrieverService.getActivityEventListener()
 
         context.addActivityEventListener(eventListener)
@@ -35,7 +37,7 @@ class RNSmsVerificationApiModule(reactContext: ReactApplicationContext)
             }
         })
 
-        mPhoneRetrieverService.requestPhoneNumber(context, promise)
+        mPhoneRetrieverService.requestPhoneNumber(context, activity, promise)
     }
 
     @Suppress("unused")
