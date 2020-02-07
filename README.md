@@ -1,26 +1,30 @@
 # react-native-sms-verification-api
+
 ![npm](https://img.shields.io/npm/dw/@busfor/react-native-sms-verification-api?style=for-the-badge)
 [![npm (tag)](https://img.shields.io/npm/v/@busfor/react-native-sms-verification-api/latest?style=for-the-badge)](https://img.shields.io/npm/v/@busfor/react-native-sms-verification-api/latest?style=for-the-badge)
 [![](https://img.shields.io/npm/types/typescript?style=for-the-badge)](https://img.shields.io/npm/types/typescript?style=for-the-badge)
 
 Verify your users by SMS without making them deal with verification code.
 
+<div>
+<img width="280px" src="preview.gif" />
+</div>
 
 ---
 
 ## Versions
 
-| 1.0.x               			 | 1.1.x+			|
-| :-------------------------:| :----------:
-| Android support libraries  | AndroidX		|
-
+|           1.0.x           |  1.1.x+  |
+| :-----------------------: | :------: |
+| Android support libraries | AndroidX |
 
 ## Getting started
 
 1. Install package
-`$ yarn add react-native-sms-verification-api`
+   `$ yarn add react-native-sms-verification-api`
 
 2. Add Kotlin gradle plugin
+
 ```gradle
 buildscript {
 	ext {
@@ -35,7 +39,7 @@ buildscript {
 }
 ```
 
-## Linking 
+## Linking
 
 ### >= 0.60
 
@@ -52,31 +56,34 @@ Autolinking will just do the job.
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.busfor.smsverification.RNSmsVerificationApiPackage;` to the imports at the top of the file
-  - Add `new RNSmsVerificationApiPackage()` to the list returned by the `getPackages()` method
+
+- Add `import com.busfor.smsverification.RNSmsVerificationApiPackage;` to the imports at the top of the file
+- Add `new RNSmsVerificationApiPackage()` to the list returned by the `getPackages()` method
+
 2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':@busfor_react-native-sms-verification-api'
-		project(':@busfor_react-native-sms-verification-api').projectDir = new File(rootProject.projectDir, '../node_modules/@busfor/react-native-sms-verification-api/android')
-  	```
+   ```
+   include ':@busfor_react-native-sms-verification-api'
+   	project(':@busfor_react-native-sms-verification-api').projectDir = new File(rootProject.projectDir, '../node_modules/@busfor/react-native-sms-verification-api/android')
+   ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      implementation project(':react-native-sms-verification-api')
-  	```
+   ```
+     implementation project(':react-native-sms-verification-api')
+   ```
 
 ## Usage
+
 ```javascript
-import SmsVerificationApi from 'react-native-sms-verification-api';
+import SmsVerificationApi from "react-native-sms-verification-api";
 
 SmsVerificationApi.requestPhoneNumber()
-      .then((phone) => Alert.alert("SmsVerificationApi.requestPhoneNumber", phone))
-      .catch((reason) => console.log(reason))
+  .then(phone => Alert.alert("SmsVerificationApi.requestPhoneNumber", phone))
+  .catch(reason => console.log(reason));
 
-SmsVerificationApi.startSmsRetriever()
+SmsVerificationApi.startSmsRetriever();
 
-SmsVerificationApi.addSmsListener((event) => {
-	Alert.alert("SmsVerificationApi.smsRetriever", event.message)
-})
+SmsVerificationApi.addSmsListener(event => {
+  Alert.alert("SmsVerificationApi.smsRetriever", event.message);
+});
 
-SmsVerificationApi.removeSmsListener()
+SmsVerificationApi.removeSmsListener();
 ```
