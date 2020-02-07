@@ -3,8 +3,8 @@ import { DeviceEventEmitter, NativeModules, Platform } from 'react-native'
 const { RNSmsVerificationApi } = NativeModules
 
 const SmsVerificationApi = (Platform.OS == 'ios') ? {
-  requestPhoneNumber: () => undefined,
-  startSmsRetriever: () => undefined,
+  requestPhoneNumber: () => Promise.reject("iOS not supported"),
+  startSmsRetriever: () => Promise.reject("iOS not supported"),
   addSmsListener: () => undefined,
   removeSmsListener: () => undefined
 } : {
