@@ -81,10 +81,10 @@ internal class PhoneRetrieverService {
     }
 
     private val mActivityEventListener = object : BaseActivityEventListener() {
-        override fun onActivityResult(activity: Activity, requestCode: Int,
-                                      resultCode: Int, data: Intent) {
+        override fun onActivityResult(activity: Activity?, requestCode: Int,
+                                      resultCode: Int, data: Intent?) {
             if (requestCode == REQUEST_PHONE_NUMBER_REQUEST_CODE) {
-                if (resultCode == Activity.RESULT_OK) {
+                if (resultCode == Activity.RESULT_OK && data != null) {
                     val credential: Credential = data.getParcelableExtra(Credential.EXTRA_KEY)
                     val phoneNumber: String = credential.id
                     resolve(phoneNumber)
