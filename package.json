@@ -30,7 +30,7 @@
   "devDependencies": {
     "auto-changelog": "^1.16.2",
     "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react-native": "^0.62.3"
   },
   "auto-changelog": {
     "unreleased": true
